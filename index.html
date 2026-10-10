@@ -392,7 +392,7 @@ html { scroll-behavior: smooth; }
   <div class="tool">
     <h3>Five questions to ask them</h3>
     <ol style="margin:0;padding-left:20px;display:grid;gap:4px">
-      <li>I've seen AP1 and AP2 mentioned together in other Samsung postings. How do they relate in your team, and how does the AP2 cycle run week to week?</li>
+      <li>I've seen AP1 and AP2 mentioned together in other Samsung postings. If your team uses both, how do they relate, and how does the AP2 cycle run week to week?</li>
       <li>Which accounts or product lines would I support first?</li>
       <li>How does the team measure forecast accuracy and bias today?</li>
       <li>Which systems and data sources does the team use day to day?</li>
@@ -435,7 +435,7 @@ html { scroll-behavior: smooth; }
   </div>
 </section>
 
-<footer>Built 10 October 2026 for the Monday interview. All worked numbers are illustrative. "AP1" and "AP2" are Samsung-internal terms with no public definition I could find; what's here is pieced together from two older Samsung job ads (Nordic 2022, Canada), so ask how they work in this team.</footer>
+<footer>Built 10 October 2026 for the Monday interview. All worked numbers are illustrative. "AP1" and "AP2" are Samsung terms with no public definition I could find; what's here is pieced together from two older Samsung job ads (Nordic 2022, Canada), so ask how they work in this team.</footer>
 </div>
 
 <script>
@@ -520,8 +520,8 @@ html { scroll-behavior: smooth; }
         q: "Sell-through dropped 30% at one account this week. What do you check first?",
         a: "Whether it's real: a data feed error, an ended promotion, a store stock-out, a competitor launch. I check with the account team before I touch the forecast." } ] },
     { name: "Forecast and accuracy", items: [
-      { t: "AP2 forecast and buffer", s: "Samsung's internal forecast version, plus a safety margin",
-        what: "<b>AP2</b> is a Samsung-internal forecast version. I couldn't find a public definition, and your JD mentions only AP2. Clues from two other Samsung job ads: a 2022 Samsung Nordic ad (posted by Adecco Sweden) has the planner \"inputting and updating AP2 Forecast considering market, supply situation and channel PSI with reference of Sales Order, AP1 Forecast\"; a Samsung Canada posting describes a rolling account forecast written \"(AP1+AP2)\". So AP1 and AP2 may be two parts of one account forecast. <b>One possible reading:</b> AP1 is closer to the sales side, AP2 is the planning forecast Biz Ops builds and loads. Treat that as a guess and ask how they relate in this team. A <b>buffer</b> is extra quantity on top of the agreed forecast to cover uncertainty.",
+      { t: "AP2 forecast and buffer", s: "A Samsung forecast version, plus a safety margin",
+        what: "<b>AP2</b> is a Samsung term for a forecast version. I couldn't find a public definition, and your JD mentions only AP2. Clues from two other Samsung job ads: a 2022 Samsung Nordic ad (posted by Adecco Sweden) has the planner \"inputting and updating AP2 Forecast considering market, supply situation and channel PSI with reference of Sales Order, AP1 Forecast\"; a Samsung Canada posting describes a rolling account forecast written \"(AP1+AP2)\". So AP1 and AP2 may be two parts of one account forecast. <b>One possible reading:</b> AP1 is closer to the sales side, AP2 is the planning forecast Biz Ops builds and loads. Treat that as a guess and ask how they relate in this team. A <b>buffer</b> is extra quantity on top of the agreed forecast to cover uncertainty.",
         f: "Loaded quantity = consensus forecast × (1 + buffer %)",
         ex: "Leaving 15 minutes early for an important meeting in case of traffic.",
         num: "Consensus 1,000 units, buffer 5%: load <b>1,050</b>. If demand doesn't come, the extra 50 become aging stock, so buffers shrink as a model gets older.",
@@ -560,7 +560,7 @@ html { scroll-behavior: smooth; }
         q: "The factory delays 800 units of a hot model. What do you do?",
         a: "Size the gap, list the options with their cost, protect priority accounts, and flag the revenue at risk in the weekly report." },
       { t: "Aging, depletion and reallocating EOH", s: "Old stock costs money; move it before it ages",
-        what: "<b>Aging inventory</b> has sat too long (buckets: 0–30, 31–60, 61–90, 90+ days). Prices fall and new models launch, so Samsung may pay <b>price protection</b>. A <b>depletion plan</b> sells it down. <b>Reallocating EOH</b> moves stock Samsung still controls (for example between its own warehouses, channels or sales subsidiaries) to where it sells faster. Stock an account has already bought belongs to the account, so there the levers are different: slow its sell-in, support sell-through with promotions, or negotiate a stock rotation.",
+        what: "<b>Aging inventory</b> has sat too long (buckets: 0–30, 31–60, 61–90, 90+ days). Prices fall and new models launch, so Samsung may pay <b>price protection</b>. A <b>depletion plan</b> sells it down. <b>Reallocating EOH</b> moves stock Samsung still controls (for example between its own warehouses or sales subsidiaries) to where it sells faster. Stock an account has already bought belongs to the account, so there the levers are different: slow its sell-in, support sell-through with promotions, or negotiate a stock rotation.",
         f: "Weeks to deplete = stock on hand ÷ weekly sell-through",
         tbl: T(["Location", "Stock", "Weekly sales", "Weeks"], [["X", "1,200", "100", "12.0"], ["Y", "300", "250", "1.2"]]),
         num: "Move 600 from X to Y: X = 600 ÷ 100 = <b>6.0 weeks</b>, Y = 900 ÷ 250 = <b>3.6 weeks</b>. Check who owns the stock, the transfer cost and time, allocation rules and upcoming promotions first.",
@@ -671,7 +671,7 @@ html { scroll-behavior: smooth; }
     ["Demand cleaning", "Fixing history: duplicates, errors, one-off events tagged so they don't inflate the baseline."],
     ["Demand shaping", "Adjusting the forward forecast for known events such as promotions or price changes."],
     ["Baseline", "Normal demand without one-off events."],
-    ["AP2", "Samsung-internal forecast version that Biz Ops loads each week (from the JD). Other Samsung ads tie it to AP1, channel PSI and supply, and one writes the account forecast as \"AP1+AP2\". No public definition: ask how AP1 and AP2 relate in this team."],
+    ["AP2", "A Samsung term for the forecast version Biz Ops loads each week (from the JD). Other Samsung ads tie it to AP1, channel PSI and supply, and one writes the account forecast as \"AP1+AP2\". No public definition that I could find: ask how AP1 and AP2 relate in this team, if it uses both."],
     ["Buffer", "Extra quantity above the forecast to cover uncertainty. Shrinks as a model ages.", "Load = Consensus × (1 + buffer %)"],
     ["Consensus forecast", "One number agreed by sales, planning, supply and finance, with assumptions written down."],
     ["MAPE", "Average % error, every item counted equally. Distorted by small items.", "avg of |F − A| ÷ A"],
@@ -743,7 +743,7 @@ html { scroll-behavior: smooth; }
   const rounds = [
     ["Screening", [
       ["Walk me through your background.", ["60–90 seconds: your previous role → working in the data (SQL validation, root causes) → why demand planning → what you're doing to learn it → what you'd bring.", "Use the pitch in “Your story”. Practise until it fits in 90 seconds."]],
-      ["Have you done demand planning before?", ["\"Not in a planning job yet.\" Then: your data background, the training program, and (only for the ones you've actually completed) the Excel exercises you did: PSI, weeks of supply, accuracy, aging.", "Calm and direct. Don't apologise and don't inflate."]],
+      ["Have you done demand planning before?", ["\"Not in a planning job yet.\" Then: your data background, the training program, and (only for the ones you've actually completed) the Excel exercises you did (PSI with weeks of supply, accuracy, WoW report, aging).", "Calm and direct. Don't apologise and don't inflate."]],
       ["Why demand planning, and why this team?", ["A real reason: you like turning data into decisions, and planning is where data quality has direct business impact.", "Show you read the JD: weekly PSI, the AP2 cycle, aging inventory, telecom and retail accounts."]],
       ["What do you know about this role?", ["Recite the six-step weekly loop from the top of this page in your own words."]]
     ]],
@@ -756,7 +756,7 @@ html { scroll-behavior: smooth; }
     ]],
     ["Case questions", [
       ["Sell-through dropped 30% at one account. What do you check before changing the forecast?", ["Is it real? Data feed error, ended promotion, store stock-out (nothing to sell), competitor launch, store reset.", "Talk to the account team, then decide: one-off (don't change baseline) or trend (re-forecast)."]],
-      ["Account X has 12 weeks of supply, Account Y has 1. What do you do?", ["First ask who owns the stock. Stock already sold to an account is the account's, so you can't simply move it.", "Account-owned: slow X's sell-in, support X's sell-through (promotion), push more sell-in to Y, or negotiate a stock rotation.", "Samsung-held (warehouses, channels, subsidiaries): reallocate using weeks-to-deplete maths (practice tool 3), after checking transfer cost, allocation rules and upcoming promotions."]],
+      ["Account X has 12 weeks of supply, Account Y has 1. What do you do?", ["First ask who owns the stock. Stock already sold to an account is the account's, so you can't simply move it.", "Account-owned: slow X's sell-in, support X's sell-through (promotion), push more sell-in to Y, or negotiate a stock rotation.", "Samsung-held (its warehouses or sales subsidiaries): reallocate using weeks-to-deplete maths (practice tool 3), after checking transfer cost, allocation rules and upcoming promotions."]],
       ["The factory delays 800 units of a hot model.", ["Quantify the gap and revenue at risk (800 × ASP).", "Options with trade-offs: expedite by air, prioritise key accounts, pull forward a later shipment.", "Communicate early in the weekly report."]],
       ["Sales wants a higher number than the data supports.", ["Bring sell-through, WOS and accuracy history; write down both assumptions; agree one number; track who was right afterwards."]],
       ["Accuracy looks fine but inventory keeps building. Why?", ["Persistent positive bias, buffers too big, or sell-in running ahead of sell-through."]]
@@ -764,7 +764,7 @@ html { scroll-behavior: smooth; }
     ["Excel and tools", [
       ["XLOOKUP vs VLOOKUP?", ["XLOOKUP: either direction, exact match by default, built-in not-found value. VLOOKUP: right only, needs FALSE."]],
       ["How would you build a PSI summary by account and week?", ["Clean table → PivotTable (rows account, columns week, values sum) or a SUMIFS grid; add WoW change columns; conditional formatting for WOS."]],
-      ["Have you used VBA?", ["Honest level. Your scripting background means you can read and edit a recorded macro; say what you'd automate (the weekly refresh)."]],
+      ["Have you used VBA?", ["Say honestly whether you have. If not: you have scripting experience from software work, you'd learn by recording a macro and reading its code, and you'd automate the weekly data refresh first."]],
       ["How would you use Claude here?", ["Drafting commentary, checking formulas, explaining anomalies. Verify every number. Only approved tools for company data."]]
     ]],
     ["Behavioural (real stories only)", [
