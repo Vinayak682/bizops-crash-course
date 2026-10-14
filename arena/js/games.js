@@ -82,7 +82,7 @@
   G.beer = {
     title: "The Beer Game", icon: "wave", color: "linear-gradient(135deg,var(--s4),var(--s2))", skill: "Bullwhip effect · module 17",
     desc: "Run one tier of a four-tier supply chain for 30 weeks. Keep costs down while the whip cracks.",
-    long: "Based on MIT's classic supply chain game. You run one tier: each week you see the order you received, your stock and backlog, and what's on its way, then you place an order upstream. Shipping takes two weeks and orders take one week to arrive. Holding a unit costs $0.50 a week; a unit of backlog costs $1.00. Three bots play the other tiers like typical first-time players. Beat their team cost.",
+    long: "A simplified version of MIT's classic supply chain game (the original uses two-week order and shipping delays). You run one tier: each week you see the order you received, your stock and backlog, and what's on its way, then you place an order upstream. Shipping takes two weeks and orders take one week to arrive. Holding a unit costs $0.50 a week; a unit of backlog costs $1.00. Three bots play the other tiers like typical first-time players. Beat their team cost.",
     fmtBest: v => money(v),
     mount(el) {
       let role = 1, seeCons = false, m, D, seed;
@@ -291,7 +291,7 @@
     ["Demand is growing about 4% a month, but the team uses a 6-month moving average.", "under", ["Hype", "Lagging model on a trend", "One-off left in", "Shortage gaming"], 1, "Moving averages and simple smoothing trail a trend, so they under-forecast growing products every month. Use a model with a trend term."],
     ["A new online channel opened in May, but nobody told demand planning.", "under", ["New channel missed", "Buffer stacking", "Promotion double-counted", "Cannibalisation"], 0, "Demand from a channel the plan doesn't know about shows up as a surprise. Collaboration (step 3 of the 6 Cs) exists to catch this."],
     ["The region adds a 5% buffer, the country adds 5%, and HQ adds 5% before loading.", "over", ["Buffer stacking", "Censored demand", "Lagging model", "Sandbagging"], 0, "1.05³ ≈ 1.158: almost 16% above the honest number. Hold one explicit buffer, ideally as safety stock."],
-    ["Finance's annual budget figure was loaded as the forecast for the next quarter.", "over", ["Target used as a forecast", "Censored demand", "New channel missed", "Order batching"], 0, "A budget is what the business wants; a forecast is what will probably happen. Loading targets as forecasts usually biases high."]
+    ["Finance's annual budget figure, set well above the recent run-rate, was loaded as the forecast for the next quarter.", "over", ["Target used as a forecast", "Censored demand", "New channel missed", "Order batching"], 0, "A budget is what the business wants; a forecast is what will probably happen. Loading targets as forecasts usually biases high."]
   ];
   G.detective = {
     title: "Forecast Detective", icon: "search", color: "linear-gradient(135deg,var(--s5),var(--s4))", skill: "Over- and under-forecasting · module 10",
@@ -340,9 +340,9 @@
     { t: "Round 2 · End of life", brief: "The old model's successor launches in 8 weeks. Retailers and carriers hold 30k units (6 weeks of supply). Sell-through is 5k a week and falling about 10% a week since the announcement. Any unit still in the channel at launch costs about $100 in price protection or markdown. How big should the final production run be?",
       voices: [["Sales", "Build 25k so we hit the quarter."], ["Supply", "The line can run anything up to 40k."], ["Demand planning", "Look at the channel inventory before you decide."], ["Finance", "Price protection is coming out of our margin."]],
       opts: [["0: no final run", 0], ["10k", 10], ["25k", 25], ["40k", 40]],
-      truth: "Over 8 weeks, sell-through at a 10% weekly decline adds up to about 28.5k.",
+      truth: "Over 8 weeks, sell-through at a 10% weekly decline adds up to about 28.5k. (A simplified model: a steady decline, channel stock spread evenly across accounts, no service stock.)",
       calc: c => { const dem = 5 * (1 - Math.pow(0.9, 8)) / 0.1, left = Math.max(0, 30 + c - dem); return { v: -left * 100e3, note: `${fmt(left, 1)}k units left in the channel at launch` }; },
-      react: ["Channel stock alone covers the remaining demand. Only about 1.5k units need a final promotion.", "Ten thousand more units that nobody will buy at full price.", "The quarter looks good in sell-in, then price protection eats it.", "A warehouse full of last year's phone."] },
+      react: ["In this model, channel stock alone covers the remaining demand. Only about 1.5k units need a final promotion.", "Ten thousand more units that nobody will buy at full price.", "The quarter looks good in sell-in, then price protection eats it.", "A warehouse full of last year's phone."] },
     { t: "Round 3 · Allocation under shortage", brief: "Only 60k units of a hot model are available. Orders: Carrier A 50k (ordered first), Retailer B 30k, Carrier C 25k. Weekly sell-through: A 4k, B 3k, C 3k. Channel stock today: A 30k, B 3k, C 6k. Lost sales cost $250 a unit in margin; excess costs about $20 a unit to carry.",
       voices: [["Carrier A", "We ordered first. We expect 50k."], ["Sales", "Pro-rata is the fair thing to do."], ["Demand planning", "Look at weeks of supply, not order size."]],
       opts: [["Pro-rata to orders", "pro"], ["By sell-through: equalise weeks of supply", "fair"], ["First come, first served", "fcfs"], ["Equal split: 20k each", "eq"]],
@@ -392,7 +392,7 @@
   G.cards = {
     title: "Flashcards", icon: "cards", color: "linear-gradient(135deg,var(--s6),var(--s3))", skill: "Spaced repetition · all modules", route: "cards", nav: "cards",
     desc: "Cards you know come back less often; cards you miss come back first. Five boxes to mastery.",
-    long: "Say the answer out loud, then flip. Tap “Again” if you missed it (back to box 1), “Hard” to keep it where it is, or “Got it” to move it up a box. Each session serves the cards from the lowest boxes first, so review happens just before you'd forget. Keys: space flips, 1 / 2 / 3 rate.",
+    long: "Say the answer out loud, then flip. Tap “Again” if you missed it (back to box 1), “Hard” to keep it where it is, or “Got it” to move it up a box. Each session serves the cards from the lowest boxes first, so the cards you struggle with come back most often. Keys: space flips, 1 / 2 / 3 rate.",
     fmtBest: v => fmt(v) + " cards",
     mount(el) {
       let filter = "all", q = [], i = 0, flipped = false, done = 0;
@@ -440,7 +440,7 @@
       const intro = () => {
         const best = S.best.exam;
         el.innerHTML = `<div class="card stack" style="max-width:620px"><label class="ctl"><span class="lab"><span>Name for your certificate (stays in this browser)</span></span><input type="text" id="ex-name" maxlength="40" value="${esc(S.name || "")}" placeholder="Your name"></label>
-          <p class="small muted">${best != null ? "Your best so far: " + best + " / 20." : "Tip: clear the boss checks first. Each one maps to a question here."}</p><div class="row"><button class="btn gold" id="ex-go" type="button">${PA.icon("cap")}Start the exam</button></div></div>`;
+          <p class="small muted">${best != null ? "Your best so far: " + best + " / 20." : "Tip: clear the boss checks first. The exam draws on the same topics."}</p><div class="row"><button class="btn gold" id="ex-go" type="button">${PA.icon("cap")}Start the exam</button></div></div>`;
         $("#ex-go", el).addEventListener("click", () => { S.name = $("#ex-name", el).value.trim(); PA.save(); start(); });
       };
       const start = () => {

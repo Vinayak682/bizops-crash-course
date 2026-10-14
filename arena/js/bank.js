@@ -35,7 +35,7 @@
   Q("accuracy", "Which metric punishes a few large misses the most?", ["MAE", "WAPE", "RMSE", "Bias"], 2, "RMSE squares the errors before averaging, so large misses dominate.");
   Q("accuracy", "Total-level accuracy is 97%, SKU-level accuracy is 85%. Why the gap?", ["A calculation error", "Errors offset when aggregated", "Bias", "Seasonality"], 1, "Over- and under-forecasts cancel at total level. Decisions at SKU level still face the 15% error.");
 
-  Q("bias", "Common control limits for the tracking signal?", ["±1", "±4", "±10", "±50%"], 1, "A frequent rule of thumb is ±4. Beyond that, investigate bias.");
+  Q("bias", "Common control limits for the tracking signal?", ["±1", "±4", "±10", "±50%"], 1, "A frequent rule of thumb is ±4 (some teams use up to ±6). Beyond that, investigate bias.");
   Q("bias", "Simple exponential smoothing on a steadily growing product tends to produce…", ["No bias", "Positive bias (too high)", "Negative bias (too low)", "Random bias"], 2, "SES has no trend term, so it trails growth: forecasts sit below actuals.");
   Q("bias", "Two forecasts have the same WAPE. One has bias 0%, the other +8%. Which builds excess stock over time?", ["The 0% one", "The +8% one", "Both equally", "Neither"], 1, "Positive bias means consistent over-forecasting; the extra accumulates as inventory.");
 
@@ -97,7 +97,7 @@
   C("trends", "Decomposition layers", "Level, trend, seasonality, noise (plus events).");
   C("trends", "Additive vs multiplicative", "Additive: seasonal swings fixed in units. Multiplicative: swings grow with the level.");
   C("trends", "Growth or just the season?", "Expected change from season = index(this) ÷ index(last) − 1. Compare the actual change with it, or use year-over-year.");
-  C("trends", "Lunar New Year", "Supply-side seasonality: many Asian factories close for 1–3 weeks, so stock is built ahead.");
+  C("trends", "Lunar New Year", "Supply-side seasonality: output at many factories, mostly in China, slows or stops for 2–4 weeks around the holiday, so stock is built ahead.");
   C("trends", "Lifecycle × seasonality", "A product's sales = lifecycle curve × seasonal index of the calendar month. Launch timing matters.");
   C("techniques", "Naive forecast", "Next = last actual. The benchmark every method must beat.");
   C("techniques", "Simple exponential smoothing", "Moves the forecast a fraction α toward each new actual. Level only.", "F(t+1) = α·A(t) + (1−α)·F(t)");
@@ -115,7 +115,7 @@
   C("accuracy", "Forecast lag", "How far ahead a forecast was made. Measure accuracy at the lag equal to the supply lead time.");
   C("accuracy", "Accuracy", "The friendly form of WAPE, floored at 0%.", "Accuracy = 1 − WAPE");
   C("bias", "Forecast bias", "Average direction of error. With F − A, positive = over-forecasting.", "Bias = Σ(F − A) ÷ ΣA");
-  C("bias", "Tracking signal", "Running sum of errors ÷ MAD. Beyond ±4 suggests bias.", "TS = Σ(F − A) ÷ MAD");
+  C("bias", "Tracking signal", "Running sum of errors ÷ MAD. Beyond ±4 (some teams use ±6) suggests bias.", "TS = Σ(F − A) ÷ MAD");
   C("bias", "Noise vs bias", "Noise cancels over time and is covered by safety stock. Bias accumulates.");
   C("bias", "Model-induced bias", "Methods without a trend term (MA, SES) trail growth, producing negative bias.");
   C("over-under", "HOPED (over-forecasting)", "Hype, One-offs left in, Promotions double-counted, Extra buffers stacked, Demand cannibalised but ignored.");
@@ -132,7 +132,7 @@
   C("levels", "Inventory turns and DIO", "How many times inventory is sold per year, and days on hand.", "Turns = COGS ÷ avg inventory · DIO = 365 ÷ turns");
   C("levels", "Anticipation stock", "Built ahead of a known event: peak season, promotion, factory shutdown.");
   C("holding", "Holding cost components", "Capital, Storage, Service (insurance, taxes, systems), Risk (obsolescence, shrinkage, damage, price erosion).");
-  C("holding", "Typical holding rate", "A common rule of thumb is 20–30% of item value per year; often higher for electronics.");
+  C("holding", "Typical holding rate", "A common rule of thumb is 20–30% of item value per year (estimates range about 15–35%); often higher for electronics.");
   C("holding", "EOQ", "Order size that balances ordering and holding costs.", "EOQ = √(2DS ÷ H)");
   C("holding", "Price protection", "Compensation a brand pays accounts when the price drops on stock they already hold.");
   C("lead-time", "Lead time", "Time from the order decision until goods are available to sell.");
@@ -150,5 +150,5 @@
   C("bullwhip", "Bullwhip effect", "Order variability grows as you move upstream from consumers to suppliers.");
   C("bullwhip", "Four causes (Lee et al., 1997)", "Demand signal processing, order batching, price fluctuations, rationing and shortage gaming.");
   C("bullwhip", "Bullwhip fixes", "Share sell-through, count the pipeline, shorten lead times, order small and often, stable pricing, allocate on sell-through.");
-  C("bullwhip", "Beer Game", "MIT's supply chain simulation from the 1960s that recreates the bullwhip effect.");
+  C("bullwhip", "Beer Game", "MIT's supply chain simulation, developed around 1960, that recreates the bullwhip effect.");
 })();

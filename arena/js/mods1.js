@@ -95,7 +95,7 @@
           <p class="say" id="pp-say"></p></div>`) +
         PA.sec("05", "Go deeper", `<details class="deep"><summary>The cycle view: four cycles, four handoffs</summary><div><p>A classic textbook (Chopra &amp; Meindl, <i>Supply Chain Management</i>) splits the chain into four cycles, each a handoff between two stages:</p>
           <ul><li><b>Customer order cycle</b>: consumer ↔ retailer</li><li><b>Replenishment cycle</b>: retailer ↔ distributor or brand warehouse</li><li><b>Manufacturing cycle</b>: warehouse ↔ factory</li><li><b>Procurement cycle</b>: factory ↔ component suppliers</li></ul><p>Every cycle has its own order, lead time and inventory. Every one is a place where the bullwhip effect (module 17) can start.</p></div></details>
-          <details class="deep"><summary>SCOR has been updated</summary><div><p>The 2022 SCOR Digital Standard reorganises the processes as Orchestrate, Plan, Order, Source, Transform, Fulfill and Return. The classic five are still how most people talk, and they're what you'll hear in interviews.</p></div></details>
+          <details class="deep"><summary>SCOR has been updated</summary><div><p>The 2022 SCOR Digital Standard reorganises the processes as Orchestrate, Plan, Order, Source, Transform, Fulfill and Return. The classic five are still widely used and remain a safe way to describe the chain.</p></div></details>
           <details class="deep"><summary>Why phones are pushed all the way to the shelf</summary><div><p>People expect to walk out of a store with a phone, and carriers sell plans with the device. That pushes the boundary to the shelf, so the entire chain runs on the forecast, and the cost of a wrong forecast lands as channel inventory, price protection or stock-outs.</p></div></details>`);
     },
     mount(root) {
@@ -289,7 +289,7 @@
           <p class="small muted">R = responsible (does the work), A = accountable (signs off), C = consulted, I = informed. A typical split; it varies by company.</p>`) +
         PA.sec("04", "Simulate: the S&OP boardroom", `<p class="small">You chair the executive meeting. Three real-world decisions. Every option has a cost, and the numbers will show who was right.</p><div id="sop-game"></div>`) +
         PA.sec("05", "Go deeper", `<details class="deep"><summary>Why one number matters</summary><div><p>If sales plans on 120k, finance budgets 110k and supply builds 95k, the company has three plans and no plan. S&amp;OP exists to replace them with one set of numbers everyone executes, with the gaps and risks visible.</p></div></details>
-          <details class="deep"><summary>Time fences tie S&amp;OP to execution</summary><div><p>Decisions inside the supply lead time are mostly locked (frozen zone). S&amp;OP spends its time on the horizon it can still change, usually 3–18 months out. See module 14.</p></div></details>
+          <details class="deep"><summary>Time fences tie S&amp;OP to execution</summary><div><p>Decisions inside the supply lead time are mostly locked (frozen zone). S&amp;OP spends its time on the horizon it can still change: beyond the frozen zone, on a rolling horizon that typically reaches 12–24 months. See module 14.</p></div></details>
           <details class="deep"><summary>Allocation is an S&amp;OP decision</summary><div><p>When supply is short, the rule for who gets what is a policy decision, not a clerical one. Allocating by sell-through also removes the reward for inflating orders, one of the four causes of the bullwhip effect (module 17).</p></div></details>`);
     },
     mount(root) {
@@ -334,7 +334,7 @@
         <p>Don't confuse it with a <b>trend</b> (a steady rise or fall), a <b>cycle</b> (economic ups and downs with no fixed length) or <b>noise</b> (random wobble).</p>
         <p>The tool is the <b>seasonal index</b>: how a period compares with an average period.</p></div>
         <div class="formula">Seasonal index (month m) = average of [ sales in m ÷ that year's monthly average ] across years</div>
-        <div class="defs"><div class="def"><b>Index 1.38</b><small>December sells 38% more than an average month.</small></div><div class="def"><b>Index 0.78</b><small>February sells 22% less than an average month.</small></div><div class="def"><b>Deseasonalise</b><small>Actual ÷ index. Shows the underlying run-rate.</small></div><div class="def"><b>Reseasonalise</b><small>Baseline × index. Turns a flat baseline into a monthly forecast.</small></div></div>`) +
+        <div class="defs"><div class="def"><b>e.g. index 1.38</b><small>That month sells 38% more than an average month.</small></div><div class="def"><b>e.g. index 0.78</b><small>That month sells 22% less than an average month.</small></div><div class="def"><b>Deseasonalise</b><small>Actual ÷ index. Shows the underlying run-rate.</small></div><div class="def"><b>Reseasonalise</b><small>Baseline × index. Turns a flat baseline into a monthly forecast.</small></div></div>`) +
         PA.sec("02", "See it: three years on one calendar", `<div class="card flat"><div class="chart" id="se-plot"></div><p class="small muted">A-Series phone sell-through, thousand units, 2023–2025 (illustrative). Each line is one year. The same shape every year is seasonality; each line sitting higher than the last is the trend.</p></div>
           <div class="card flat"><div class="chart" id="se-idx"></div></div>`) +
         PA.sec("03", "Live example: calculate the index", `<div class="tbl" id="se-table"></div><div class="callout info" id="se-use"></div>`) +
@@ -345,7 +345,7 @@
           <div class="chart" id="se-lab"></div><div class="chart" id="se-labidx"></div>
           <p class="say" id="se-labsay"></p></div>`) +
         PA.sec("05", "Go deeper", `<details class="deep"><summary>When there's a strong trend, use a moving average</summary><div><p>Dividing by each year's average works when growth is moderate. With strong growth, the textbook method is <b>ratio to moving average</b>: compute a centred 12-month moving average (which contains no seasonality), divide each month by it, then average those ratios month by month.</p></div></details>
-          <details class="deep"><summary>Moving holidays</summary><div><p>Easter, Diwali, Ramadan, Lunar New Year and Singles' Day weeks don't sit in the same week every year. A fixed monthly index blurs them. Model them as <b>events</b> on their actual dates, then apply the effect.</p></div></details>
+          <details class="deep"><summary>Moving holidays</summary><div><p>Easter, Diwali, Ramadan and Lunar New Year move between weeks, sometimes months, from year to year, and even fixed-date events like Singles' Day (11 November) or Black Friday land in a different week number. A fixed monthly index blurs them. Model them as <b>events</b> on their actual dates, then apply the effect.</p></div></details>
           <details class="deep"><summary>Weekly and 4-4-5 calendars</summary><div><p>Weekly planning uses 52 buckets, with a 53rd week some years. Many companies use a 4-4-5 retail calendar (two 4-week months, then a 5-week month), so “March” can be 5 weeks long. Compare like with like, or the index picks up calendar effects instead of demand.</p></div></details>`);
     },
     mount(root) {
@@ -399,7 +399,7 @@
     ["Apr", [["Quiet: baseline months", "d"]]],
     ["May", [["Summer starts: ACs, fans", "d"]]],
     ["Jun", [["Mid-year sales in some markets", "d"]]],
-    ["Jul", [["Online mega-sale event (often July)", "d"], ["Back-to-school starts", "d"]]],
+    ["Jul", [["Mid-year online mega-sales (June or July)", "d"], ["Back-to-school starts", "d"]]],
     ["Aug", [["Back-to-school peak: laptops, tablets", "d"], ["Holiday pre-build begins", "s"]]],
     ["Sep", [["Autumn flagship launches (some brands)", "d"], ["Old model starts to decline", "d"]]],
     ["Oct", [["Diwali (India, Oct or Nov)", "d"], ["Peak-season shipping capacity tight", "s"]]],
@@ -415,7 +415,7 @@
     html() {
       return PA.sec("01", "The idea", `<div class="prose"><p>Decomposition splits a series into parts you can reason about:</p></div>
         <div class="defs"><div class="def"><b>Level</b><small>The typical volume right now.</small></div><div class="def"><b>Trend</b><small>The direction over time: growing, flat or declining.</small></div><div class="def"><b>Seasonality</b><small>The repeating calendar shape (module 04).</small></div><div class="def"><b>Noise</b><small>What's left: random variation you can't forecast.</small></div></div>
-        <div class="grid2"><div class="formula wrap"><b>Additive:</b> Sales = Trend + Season + Noise<br><small>Seasonal swings stay the same size in units.</small></div><div class="formula wrap"><b>Multiplicative:</b> Sales = Trend × Season × Noise<br><small>Seasonal swings grow as the business grows. Most consumer electronics behave like this.</small></div></div>`) +
+        <div class="grid2"><div class="formula wrap"><b>Additive:</b> Sales = Trend + Season + Noise<br><small>Seasonal swings stay the same size in units.</small></div><div class="formula wrap"><b>Multiplicative:</b> Sales = Trend × Season × Noise<br><small>Seasonal swings grow as the business grows. Many growing consumer electronics lines behave like this.</small></div></div>`) +
         PA.sec("02", "Simulate: the decomposition studio", `<div class="card flat sim"><div class="sim-h">${PA.chips("tr-model", [["mul", "Multiplicative"], ["add", "Additive"]], "mul")}<label class="row small"><input type="checkbox" id="tr-ev"> Add a Black Friday event</label></div>
           <div class="ctls">${PA.ctl("tr-trend", "Trend per month", -2, 3, 0.1, 1.2, "%")}${PA.ctl("tr-amp", "Seasonal strength", 0, 150, 5, 100, "%")}${PA.ctl("tr-noise", "Noise", 0, 20, 1, 5, "%")}</div>
           <div class="chart" id="tr-main"></div>
@@ -424,7 +424,7 @@
         PA.sec("03", "Live example: growth or just the season?", `<div class="card flat stack"><p class="small">Month-over-month comparisons lie during seasonal swings. A phone line has these seasonal indices: Jan 0.82, Feb 0.78, Mar 1.02, Jul 0.97, Aug 1.04, Oct 0.95, Nov 1.28, Dec 1.38. Judge each headline. Within ±5% of what the season predicts counts as “just the season”.</p><div id="tr-game" class="stack"></div><div class="row"><button class="btn primary" id="tr-check" type="button">Reveal</button><span class="mono" id="tr-score"></span></div></div>
           <div class="formula">Expected change from season alone = index(this month) ÷ index(last month) − 1</div>`) +
         PA.sec("04", "See it: the consumer electronics calendar", `<div class="grid3">${CAL.map(c => `<div class="def"><b>${c[0]}</b>${c[1].map(e => `<span class="pill ${e[1] === "s" ? "warn" : ""}" style="white-space:normal">${e[1] === "s" ? "Supply: " : ""}${e[0]}</span>`).join("")}</div>`).join("")}</div>
-          <p class="small muted">Blue = demand-side events; orange = supply-side events. Dates and sizes vary by market and year. Lunar New Year closes many Asian factories for one to three weeks, so planners build stock ahead of it.</p>`) +
+          <p class="small muted">Blue = demand-side events; orange = supply-side events. Dates and sizes vary by market and year. The official Lunar New Year holiday lasts about a week, but output at many factories, mostly in China, slows for two to four weeks around it, so planners build stock ahead.</p>`) +
         PA.sec("05", "See it: the product lifecycle meets the calendar", `<div class="card flat sim"><div class="sim-h"><span class="small">Same phone, same lifecycle. Only the launch month changes.</span>${PA.chips("tr-launch", [["2", "Launch in March"], ["8", "Launch in September"]], "8")}</div><div class="chart" id="tr-life"></div><p class="say" id="tr-lsay"></p></div>`) +
         PA.sec("06", "Go deeper", `<details class="deep"><summary>Year-over-year (YoY) is the simplest seasonality filter</summary><div><p>Comparing this November with last November cancels the season automatically. Use YoY for headlines and month-over-month only on deseasonalised numbers.</p></div></details>
           <details class="deep"><summary>Lifecycle beats history for launches</summary><div><p>A phone's history only starts at launch, so there's no seasonal history to learn from. Planners borrow the shape of a similar past launch (a like-item curve, module 07) and multiply by the seasonal index for each calendar month.</p></div></details>
@@ -447,7 +447,7 @@
         const small = (id, data, color) => PA.line($(id, root), { labels: PA.DATA.labels36, series: [{ name: "", data, color, legend: false }], height: 130, legend: false, ml: 36, xLabelW: 70 });
         small("#tr-c1", T, "var(--s0)"); small("#tr-c2", Sc, "var(--s2)"); small("#tr-c3", N, "var(--s4)");
         const d1 = Sc[11], d3 = Sc[35];
-        $("#tr-say", root).innerHTML = model === "mul" ? `In the <b>multiplicative</b> model the December lift grows with the business: <b>${sgn(d1)}</b> units above trend in year 1, <b>${sgn(d3)}</b> in year 3. That's what most growing electronics lines look like.` : `In the <b>additive</b> model the December lift is a fixed number of units every year (<b>${sgn(d1)}</b> in year 1 and ${sgn(d3)} in year 3), even as the trend moves. Use it when seasonal swings don't scale with volume.`;
+        $("#tr-say", root).innerHTML = model === "mul" ? `In the <b>multiplicative</b> model the December lift grows with the business: <b>${sgn(d1)}</b> units above trend in year 1, <b>${sgn(d3)}</b> in year 3. Many growing electronics lines look like this.` : `In the <b>additive</b> model the December lift is a fixed number of units every year (<b>${sgn(d1)}</b> in year 1 and ${sgn(d3)} in year 3), even as the trend moves. Use it when seasonal swings don't scale with volume.`;
       };
       let cur = {};
       PA.bindCtls(root, ["tr-trend", "tr-amp", "tr-noise"], v => { cur = v; draw(v); }, { "tr-trend": x => (x > 0 ? "+" : "") + x.toFixed(1) + "%" });
@@ -478,7 +478,7 @@
     boss: [
       { q: "Sales rose 35% from October to November. What should you check before calling it growth?", o: ["Nothing: 35% is clearly growth", "Last November, or the seasonal index", "Only last month's forecast", "The finance budget"], a: 1, why: "Compare like with like. Year-over-year, or a deseasonalised month-over-month change, removes the seasonal effect." },
       { q: "Seasonal peaks get bigger every year as the business grows. Which model fits?", o: ["Additive", "Multiplicative", "Naive", "None of these"], a: 1, why: "In a multiplicative model the seasonal effect is a percentage of the trend, so peaks grow with volume." },
-      { q: "Which is a supply-side seasonal event for electronics assembled in Asia?", o: ["Black Friday", "Lunar New Year factory shutdown", "Back-to-school", "Singles' Day"], a: 1, why: "Lunar New Year closes many factories for one to three weeks, so supply has to be built ahead. The others drive demand." }
+      { q: "Which is a supply-side seasonal event for electronics assembled in Asia?", o: ["Black Friday", "Lunar New Year factory shutdown", "Back-to-school", "Singles' Day"], a: 1, why: "Output at many factories, mostly in China, slows or stops for two to four weeks around Lunar New Year, so supply has to be built ahead. The others drive demand." }
     ],
     take: ["Sales = level + trend + season + noise (or multiplied, when swings grow with volume).", "Month-over-month lies in seasonal months. Use year-over-year or deseasonalised numbers.", "Launch timing × seasonality decides a model's lifetime volume. Plan depletion before the successor arrives."],
     mnem: ["“Strip the season, then judge the trend”", "Level · Trend · Season · Noise. Compare year-over-year or deseasonalise before calling anything growth."]
